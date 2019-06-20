@@ -25,16 +25,24 @@ steps:
     targetType: 'inline'
     script: 'echo $DOWNLOADSECUREFILE_SECUREFILEPATH'
 
-- task: AndroidSigning@3
+#- task: AndroidSigning@3
+#  inputs:
+#    apkFiles: '**/*.apk'
+#    apksignerKeystoreFile: '.keystore'
+#    apksignerKeystorePassword: '$(apksignerKeystorePassword)'
+#    apksignerKeystoreAlias: 'chack1'
+#    apksignerKeyPassword: '$(apksignerKeyPassword)'
+#    zipalign: true
+
+- task: AndroidSigning@2
   inputs:
     apkFiles: '**/*.apk'
-    apksignerKeystoreFile: '.keystore'
-    apksignerKeystorePassword: '$(apksignerKeystorePassword)'
-    apksignerKeystoreAlias: 'chack1'
-    apksignerKeyPassword: '$(apksignerKeyPassword)'
-    apksignerFile: '$(Agent.TempDirectory)'
-    zipalignFile: '$(Agent.TempDirectory)'
-#    zipalign: true
+    jarsign: true
+    jarsignerKeystoreFile: '.keystore'
+    jarsignerKeystorePassword: '$(apksignerKeystorePassword)'
+    jarsignerKeystoreAlias: 'chack1'
+    jarsignerKeyPassword: '$(apksignerKeystorePassword)'
+    zipalign: true
 
 - task: CopyFiles@2
   inputs:
