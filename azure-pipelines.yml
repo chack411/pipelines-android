@@ -23,7 +23,7 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: 'echo $env:DOWNLOADSECUREFILE_SECUREFILEPATH'
+    script: 'echo $DOWNLOADSECUREFILE_SECUREFILEPATH'
 
 - task: AndroidSigning@3
   inputs:
@@ -34,7 +34,7 @@ steps:
     apksignerKeystorePassword: '$(apksignerKeystorePassword)'
     apksignerKeystoreAlias: 'chack1'
     apksignerKeyPassword: '$(apksignerKeyPassword)'
-    zipalign: true
+#    zipalign: true
 
 - task: CopyFiles@2
   inputs:
