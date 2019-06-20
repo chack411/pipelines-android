@@ -29,8 +29,8 @@ steps:
   inputs:
     apkFiles: '**/*.apk'
 #    apksignerKeystoreFile: '$(Agent.TempDirectory)/.keystore'
-#    apksignerKeystoreFile: '$env:DOWNLOADSECUREFILE_SECUREFILEPATH'
-    apksignerKeystoreFile: '.keystore'
+    apksignerKeystoreFile: '$DOWNLOADSECUREFILE_SECUREFILEPATH'
+#    apksignerKeystoreFile: '.keystore'
     apksignerKeystorePassword: '$(apksignerKeystorePassword)'
     apksignerKeystoreAlias: 'chack1'
     apksignerKeyPassword: '$(apksignerKeyPassword)'
