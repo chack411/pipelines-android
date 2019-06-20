@@ -20,6 +20,22 @@ steps:
   inputs:
     secureFile: '.keystore'
 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'echo $env:DOWNLOADSECUREFILE_SECUREFILEPATH'
+
+- task: AndroidSigning@3
+  inputs:
+    apkFiles: '**/*.apk'
+#    apksignerKeystoreFile: '$(Agent.TempDirectory)/.keystore'
+#    apksignerKeystoreFile: '$env:DOWNLOADSECUREFILE_SECUREFILEPATH'
+    apksignerKeystoreFile: '.keystore'
+    apksignerKeystorePassword: '$(apksignerKeystorePassword)'
+    apksignerKeystoreAlias: 'chack1'
+    apksignerKeyPassword: '$(apksignerKeyPassword)'
+    zipalign: true
+
 - task: CopyFiles@2
   inputs:
     contents: '**/*.apk'
