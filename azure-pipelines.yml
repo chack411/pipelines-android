@@ -28,12 +28,12 @@ steps:
 - task: AndroidSigning@3
   inputs:
     apkFiles: '**/*.apk'
-#    apksignerKeystoreFile: '$(Agent.TempDirectory)/.keystore'
-    apksignerKeystoreFile: '$DOWNLOADSECUREFILE_SECUREFILEPATH'
-#    apksignerKeystoreFile: '.keystore'
+    apksignerKeystoreFile: '.keystore'
     apksignerKeystorePassword: '$(apksignerKeystorePassword)'
     apksignerKeystoreAlias: 'chack1'
     apksignerKeyPassword: '$(apksignerKeyPassword)'
+    apksignerFile: '$(Agent.TempDirectory)'
+    zipalignFile: '$(Agent.TempDirectory)'
 #    zipalign: true
 
 - task: CopyFiles@2
