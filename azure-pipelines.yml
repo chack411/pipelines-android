@@ -33,7 +33,7 @@ steps:
     apksignerKeystoreAlias: 'chack1'
     apksignerKeyPassword: '$(apksignerKeyPassword)'
     apksignerArguments: '-verbose -sigalg MD5withRSA -digestalg SHA1'
-    #zipalign: true
+    zipalign: false
 
 - task: CopyFiles@2
   inputs:
