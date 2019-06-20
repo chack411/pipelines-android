@@ -25,24 +25,15 @@ steps:
     targetType: 'inline'
     script: 'echo $DOWNLOADSECUREFILE_SECUREFILEPATH'
 
-#- task: AndroidSigning@3
-#  inputs:
-#    apkFiles: '**/*.apk'
-#    apksignerKeystoreFile: '.keystore'
-#    apksignerKeystorePassword: '$(apksignerKeystorePassword)'
-#    apksignerKeystoreAlias: 'chack1'
-#    apksignerKeyPassword: '$(apksignerKeyPassword)'
-#    zipalign: true
-
-- task: AndroidSigning@2
+- task: AndroidSigning@3
   inputs:
     apkFiles: '**/*.apk'
-    jarsign: true
-    jarsignerKeystoreFile: '.keystore'
-    jarsignerKeystorePassword: '$(apksignerKeystorePassword)'
-    jarsignerKeystoreAlias: 'chack1'
-    jarsignerKeyPassword: '$(apksignerKeystorePassword)'
-    zipalign: true
+    apksignerKeystoreFile: '.keystore'
+    apksignerKeystorePassword: '$(apksignerKeystorePassword)'
+    apksignerKeystoreAlias: 'chack1'
+    apksignerKeyPassword: '$(apksignerKeyPassword)'
+    apksignerArguments: '-verbose -sigalg MD5withRSA -digestalg SHA1'
+    #zipalign: true
 
 - task: CopyFiles@2
   inputs:
@@ -54,3 +45,4 @@ steps:
     pathToPublish: '$(build.artifactStagingDirectory)'
     artifactName: 'drop'
     artifactType: 'container'
+
